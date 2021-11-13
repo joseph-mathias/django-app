@@ -1,0 +1,43 @@
+
+{% extends "products/base.html" %}
+
+{% block Offers %}
+<div class="card border-success mb-3" style="max-width: 18rem;">
+  <div class="card-header bg-transparent border-success">All Odoriferous</div>
+  <div class="card-body text-success">
+    <h5 class="card-title">Run For 6 Days</h5>
+    <p class="card-text">10% off when purchase 4(four) Perfumes</p>
+  </div>
+  <div class="card-footer bg-transparent border-success">Scent</div>
+</div>
+{% endblock %}
+
+{% block content %}
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card" style="border: none;">
+                <img src="{{ object.product_img.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ object.title }}</h5>
+                  <h6>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </h6>
+                  <p class="card-text">{{ object.discription }}</p>
+                  <h5>
+                    <small><s class="text-secondary">Kr{{object.old_price }}</s></small>
+                    <span class="price">Kr{{ object.new_price }}</span>
+                  </h5>
+                  <p class="text-secondary">({{ object.stock }})</p>
+                </div>
+              </div>
+              {% if object.author == user %}
+              <a href="{% url 'product-update' object.id %}" class="btn btn-outline-secondary btn-sm mt-1 mb-1">Update</a>
+              <a href="{% url 'product-delete' object.id %}" class="btn btn-danger btn-sm mt-1 mb-1">Delete</a>
+              {% endif %}
+            </div>
+          </div>
+{% endblock content %}

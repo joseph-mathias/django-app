@@ -1,0 +1,35 @@
+{% extends "products/base.html" %}
+{% load crispy_forms_tags %}
+
+  {% block Offers %}
+  <div class="card border-success mb-3" style="max-width: 18rem;">
+    {% csrf_token %}
+    <h4 class="text-center">Update offers</h4>
+      <input type="text" class="form-control">
+      <input type="text" class="form-control">
+      <input type="text" class="form-control">
+    <div class="form-group mt-1 mb-1 mx-auto">
+      <button class="btn btn-success">Make Changes</button>
+    </div>
+  </div>
+  {% endblock %}
+
+  {% block content %}
+    <div class="col-md-6">
+        <div class="card-deck mb-4">
+            <!-- card Row starts -->
+                <form action="" method="POST">
+                  {% csrf_token %}
+                    <h2>Enter New Products</h2>
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Product</legend>
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group mt-3">
+                        <button class="btn btn-warning">Enter</button>
+                    </div>
+                </form>
+            <!--Card Row ends-->
+        </div>
+    </div>
+    {% endblock %}
